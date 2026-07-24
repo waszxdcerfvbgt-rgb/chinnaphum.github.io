@@ -1,1 +1,505 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | นาย ชินจัง วัชรดี</title>
+    <!-- นำเข้า Font ภาษาไทยสวยๆ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- นำเข้า Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ====== ตั้งค่าพื้นฐาน (CSS Reset) ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
 
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --dark-color: #1f2937;
+            --light-color: #f3f4f6;
+            --text-color: #374151;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ====== ส่วนเมนูนำทาง (Navbar) ====== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ====== ส่วนหัว (Hero Section) ====== */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            padding: 100px 20px 50px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #6b7280;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* ====== ส่วนเนื้อหาทั่วไป ====== */
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ====== ส่วนข้อมูลส่วนตัวและการศึกษา ====== */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--light-color);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .about-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        .about-card ul {
+            list-style: none;
+        }
+
+        .about-card ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-card ul li i {
+            color: var(--primary-color);
+        }
+
+        /* ====== ส่วนทักษะ (Skills) ====== */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: #fff;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* ====== ส่วนผลงาน (Projects) ====== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e5e7eb;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #e5e7eb;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ====== ส่วนติดต่อ (Contact) ====== */
+        #contact {
+            background: var(--dark-color);
+            color: #fff;
+            max-width: 100%;
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .contact-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-inner .section-title {
+            color: #fff;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ====== Responsive สำหรับมือถือ ====== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* ซ่อนเมนูในจอมือถือ (สามารถพัฒนาเป็น Hamburger menu ได้) */
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- เมนูนำทาง -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Portfolio.</div>
+            <ul class="nav-links">
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#about">เกี่ยวกับฉัน</a></li>
+                <li><a href="#skills">ทักษะ</a></li>
+                <li><a href="#projects">ผลงาน</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ส่วนหัว -->
+    <header id="home">
+        <div class="hero-content">
+            <!-- ใส่รูปโปรไฟล์ของคุณที่นี่ (เปลี่ยน src) -->
+            <img src="https://via.placeholder.com/180" alt="รูปโปรไฟล์" class="hero-img">
+            <h1>สมชาย ใจดี</h1>
+            <h2>นักศึกษาปวช. สาขาเทคโนโลยีสารสนเทศ</h2>
+            <p class="hero-text">
+                มองหาประสบการณ์การทำงานและการฝึกงาน เพื่อพัฒนาทักษะด้านไอที 
+                มีความกระตือรือร้นในการเรียนรู้สิ่งใหม่ๆ และพร้อมทำงานเป็นทีม
+            </p>
+            <a href="#contact" class="btn">ติดต่อจ้างงาน <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </header>
+
+    <!-- ส่วนข้อมูลส่วนตัวและการศึกษา -->
+    <section id="about">
+        <h2 class="section-title">เกี่ยวกับฉัน & การศึกษา</h2>
+        <div class="about-container">
+            <div class="about-card">
+                <h3>ข้อมูลส่วนตัว</h3>
+                <ul>
+                    <li><i class="fas fa-user"></i> ชื่อ-สกุล: สมชาย ใจดี</li>
+                    <li><i class="fas fa-birthday-cake"></i> อายุ: 19 ปี</li>
+                    <li><i class="fas fa-map-marker-alt"></i> ที่อยู่: กรุงเทพมหานคร</li>
+                    <li><i class="fas fa-heart"></i> สถานะ: กำลังมองหางาน / ฝึกงาน</li>
+                </ul>
+            </div>
+            <div class="about-card">
+                <h3>ประวัติการศึกษา</h3>
+                <ul>
+                    <li><i class="fas fa-school"></i> ปวช. สาขาเทคโนโลยีสารสนเทศ (กำลังศึกษาอยู่)</li>
+                    <li><i class="fas fa-graduation-cap"></i> วิทยาลัยเทคโนโลยีชื่อดัง จังหวัด... </li>
+                    <li><i class="fas fa-certificate"></i> GPA: 3.50</li>
+                    <li><i class="fas fa-trophy"></i> ผลงาน: รางวัลชนะเลิศแข่งขันทำเว็บไซต์ระดับวิทยาลัย</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ส่วนทักษะ -->
+    <section id="skills">
+        <h2 class="section-title">ทักษะความสามารถ</h2>
+        <div class="skills-container">
+            <div class="skill-tag">HTML & CSS</div>
+            <div class="skill-tag">JavaScript</div>
+            <div class="skill-tag">PHP (Basic)</div>
+            <div class="skill-tag">MySQL</div>
+            <div class="skill-tag">Microsoft Office</div>
+            <div class="skill-tag">Adobe Photoshop</div>
+            <div class="skill-tag">ซ่อมบำรุงคอมพิวเตอร์</div>
+            <div class="skill-tag">ทำงานเป็นทีม</div>
+        </div>
+    </section>
+
+    <!-- ส่วนผลงาน -->
+    <section id="projects">
+        <h2 class="section-title">ผลงาน (Projects)</h2>
+        <div class="projects-grid">
+            <!-- ผลงานที่ 1 -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200?text=Project+1" alt="Project 1" class="project-img">
+                <div class="project-info">
+                    <h3>ระบบจองห้องเรียน</h3>
+                    <p>โปรเจคจบหลักสูตร พัฒนาด้วย HTML, CSS, PHP และ MySQL เพื่อใช้ภายในวิทยาลัย</p>
+                    <a href="#" class="project-link">ดูรายละเอียด <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- ผลงานที่ 2 -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200?text=Project+2" alt="Project 2" class="project-img">
+                <div class="project-info">
+                    <h3>เว็บไซต์ร้านค้าออนไลน์</h3>
+                    <p>เว็บไซต์สำหรับร้านขายของชำ ทำหน้าที่แสดงสินค้าและตะกร้าสินค้าเบื้องต้น</p>
+                    <a href="#" class="project-link">ดูรายละเอียด <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- ผลงานที่ 3 -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200?text=Project+3" alt="Project 3" class="project-img">
+                <div class="project-info">
+                    <h3>ออกแบบโปสเตอร์กิจกรรม</h3>
+                    <p>ออกแบบสื่อสิ่งพิมพ์และโปสเตอร์ประชาสัมพันธ์สำหรับชมรมในวิทยาลัยด้วย Photoshop</p>
+                    <a href="#" class="project-link">ดูรายละเอียด <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ส่วนติดต่อ -->
+    <section id="contact">
+        <div class="contact-inner">
+            <h2 class="section-title">ติดต่อฉัน</h2>
+            <p>หากบริษัทของคุณกำลังมองหาเด็กฝึกงานหรือพนักงานที่พร้อมเรียนรู้ สามารถติดต่อได้ทางช่องทางด้านล่างนี้</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i> 081-234-5678
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> somchai@example.com
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-line"></i> @somchai_it
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-facebook"></i> Somchai Jaidee
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Portfolio สมชาย ใจดี. สงวนลิขสิทธิ์ทุกประการ.</p>
+    </footer>
+
+    <script>
+        // โค้ด JavaScript เพื่อเพิ่มเอฟเฟกต์ตอนเลื่อนเมาส์เข้าหาเมนู
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // แจ้งเตือนเมื่อกดปุ่มดูรายละเอียดผลงาน (สามารถดัดแปลงเป็นลิงก์จริงได้)
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('สามารถใส่ลิงก์ Google Drive หรือ GitHub สำหรับผลงานชิ้นนี้ได้ที่นี่ครับ');
+            });
+        });
+    </script>
+</body>
+</html>
